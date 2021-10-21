@@ -19,6 +19,7 @@ const socexFilter = [
 
 const Home = () => {
     const [filters, setFilters] = useState(filters1);
+    const [filterValue, setFilterValue] = useState('');
 
     return <Page>
         <div style={{ height: 400 }}>
@@ -36,10 +37,14 @@ const Home = () => {
             />
         </div>
 
+
         <button onClick={() => setFilters(filters2)}>Filter reset</button>
         <button onClick={() => setFilters([])}>Filter reset full</button>
         <button onClick={() => setFilters(socexFilter)}>Filter socex</button>
-
+<hr/>
+<p>Filter only</p>
+        <input value={filterValue} onChange={e => setFilterValue(e.target.value)}/>
+        <button onClick={() => setFilters([newPositiveAttributeFilter(Md.Category, [filterValue]),])}>Update filter</button>
     </Page>;
 };
 
